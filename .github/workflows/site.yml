@@ -1,0 +1,27 @@
+name: Update lists
+
+on:
+  schedule:
+  - cron: '15 14 * * *'
+  push:
+    branches:
+    - master
+
+jobs:
+  update:
+    run-on: ubuntu-latest
+    name: Update list
+    steps:
+    - uses: actions/checkout@master
+    - name: Set up Ruby 2.7
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.7
+    - name: Let's do this
+      run: |
+        sudo apt-get update && sudo apt-get install zopfli aws-cli
+        gem install nokogiri
+        ./update.sh
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

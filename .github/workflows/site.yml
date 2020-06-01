@@ -19,7 +19,7 @@ jobs:
         ruby-version: 2.7
     - name: Let's do this
       run: |
-        sudo apt-get update && sudo apt-get install zopfli aws-cli
+        sudo apt-get update && sudo apt-get install zopfli awscli
         gem install nokogiri
         ./update.sh
       env:

@@ -9,7 +9,7 @@ on:
 
 jobs:
   update:
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     name: Update list
     steps:
     - uses: actions/checkout@master
